@@ -23,6 +23,10 @@ train_y = train_df[['label']]
 
 test_x = test_df[['mail_type']]
 
+print(test_x)
+
+test_x.mail_type[test_x['mail_type'] == 'text/html ']='text/html'
+
 ## Do one hot encoding of categorical feature
 feat_enc = OneHotEncoder()
 feat_enc.fit(train_x)
