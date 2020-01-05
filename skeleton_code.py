@@ -33,6 +33,7 @@ feat_enc.fit(train_x)
 train_x_featurized = feat_enc.transform(train_x)
 test_x_featurized = feat_enc.transform(test_x)
 
+
 ## Train a simple KNN classifier using featurized data
 neigh = KNeighborsClassifier(n_neighbors=3)
 neigh.fit(train_x_featurized, train_y)
