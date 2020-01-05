@@ -23,9 +23,9 @@ train_y = train_df[['label']]
 
 test_x = test_df[['mail_type']]
 
-print(test_x)
+# print(test_x)
 
-test_x.mail_type[test_x['mail_type'] == 'text/html ']='text/html'
+# test_x.mail_type[test_x['mail_type'] == 'text/html ']='text/html'
 
 ## Do one hot encoding of categorical feature
 feat_enc = OneHotEncoder()
