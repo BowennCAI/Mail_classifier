@@ -23,11 +23,16 @@ train_y = train_df[['label']]
 
 test_x = test_df[['mail_type']]
 
+# print(test_x)
+
+# test_x.mail_type[test_x['mail_type'] == 'text/html ']='text/html'
+
 ## Do one hot encoding of categorical feature
 feat_enc = OneHotEncoder()
 feat_enc.fit(train_x)
 train_x_featurized = feat_enc.transform(train_x)
 test_x_featurized = feat_enc.transform(test_x)
+
 
 ## Train a simple KNN classifier using featurized data
 neigh = KNeighborsClassifier(n_neighbors=3)
