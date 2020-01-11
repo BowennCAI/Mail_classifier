@@ -42,10 +42,13 @@ sc.fit(data_train)
 X_train_std = sc.transform(data_train)
 X_test_std = sc.transform(data_test)
 
-# pca = PCA(n_components=7)
+# pca = PCA()
 # a = np.vstack((X_train_std, X_test_std))
 # pca.fit(a)
-#
+# pred_df = pd.DataFrame(pca.explained_variance_ratio_)
+# pred_df.to_csv("pca_analysis.csv")
+
+
 # X_train_std = a[0:25066]
 # X_test_std = a[25066:35811]
 
@@ -57,9 +60,9 @@ test_x_featurized = feat_enc.transform(test_x).A
 
 X_train = np.hstack((X_train_std, train_x_featurized))
 X_test = np.hstack((X_test_std, test_x_featurized))
-
-print(train_df.corr("spearman"))
-train_df.corr("spearman").to_csv("num_corelation_label.csv", index=True, index_label='Id')
+#
+# print(train_df.corr("spearman"))
+# train_df.corr("spearman").to_csv("num_corelation_label.csv", index=True, index_label='Id')
 
 
 
@@ -97,5 +100,5 @@ train_df.corr("spearman").to_csv("num_corelation_label.csv", index=True, index_l
 
 ######
 
-#
-# print(cross_val_score(clf_rdf, X_train, train_y, cv=3))
+
+# print(cross_val_score(clf, X_train, train_y, cv=3))
