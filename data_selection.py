@@ -68,36 +68,43 @@ X_test = np.hstack((X_test_std, test_x_featurized))
 
 #########
 # RandomForest
-# clf_rdf = RandomForestClassifier()
+clf_rdf = RandomForestClassifier()
 # clf_rdf.fit(X_train, train_y)
 #
 # pred_y = clf_rdf.predict(X_test)
 #
 # pred_df = pd.DataFrame(pred_y, columns=['label'])
 # pred_df.to_csv("rdf_submission.csv", index=True, index_label='Id')
-
+val1 = cross_val_score(clf_rdf, X_train, train_y, cv=3)
+pred_df = pd.DataFrame(val1)
+pred_df.to_csv("rdf_val.csv")
 ######
 
 #########
 # GradientBoosting
-# clf_GB = GradientBoostingClassifier()
+clf_GB = GradientBoostingClassifier()
 # clf_GB.fit(X_train,train_y)
 #
 # pred_y = clf_GB.predict(X_test)
 #
 # pred_df = pd.DataFrame(pred_y, columns=['label'])
 # pred_df.to_csv("GB_submission.csv", index=True, index_label='Id')
+val2 = cross_val_score(clf_GB, X_train, train_y, cv=3)
+pred_df = pd.DataFrame(val2)
+pred_df.to_csv("GB_val.csv")
 ######
 
 
 #########
-# clf = MLPClassifier(activation='tanh', max_iter=500, batch_size=128)
+clf = MLPClassifier(activation='tanh', max_iter=500, batch_size=128)
 # # clf = MLPClassifier(batch_size=128)
 # clf.fit(X_train, train_y)
 # pred_y = clf.predict(X_test)
 # pred_df = pd.DataFrame(pred_y, columns=['label'])
 # pred_df.to_csv("nn_submission.csv", index=True, index_label='Id')
-
+val3 = cross_val_score(clf, X_train, train_y, cv=3)
+pred_df = pd.DataFrame(val3)
+pred_df.to_csv("NN_val.csv")
 ######
 
 
